@@ -44,7 +44,7 @@ public class JobController {
     }
 
     @GetMapping("/{id}")
-    public JobDto getJob(@PathVariable int id) {
+    public JobDto getJob(@PathVariable("id") int id) {
         JobDto job = jobService.findById(id);
         if (job == null) {
             throw new com.recruitment.exception.ApiException(404, "Job not found.");
@@ -60,14 +60,14 @@ public class JobController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteJob(@PathVariable int id, HttpSession session) {
+    public ResponseEntity<Void> deleteJob(@PathVariable("id") int id, HttpSession session) {
         UserProfileDto company = authService.requireCompany(session);
         jobService.deleteJob(id, company.companyId());
         return ResponseEntity.noContent().build();
     }
 
     @PostMapping("/{id}/unavailable")
-    public ResponseEntity<Void> markJobUnavailable(@PathVariable int id, HttpSession session) {
+    public ResponseEntity<Void> markJobUnavailable(@PathVariable("id") int id, HttpSession session) {
         UserProfileDto company = authService.requireCompany(session);
         jobService.markUnavailable(id, company.companyId());
         return ResponseEntity.noContent().build();

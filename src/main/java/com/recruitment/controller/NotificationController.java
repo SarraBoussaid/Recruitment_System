@@ -39,7 +39,7 @@ public class NotificationController {
     }
 
     @PatchMapping("/{id}/read")
-    public Map<String, String> markRead(@PathVariable int id, HttpSession session) {
+    public Map<String, String> markRead(@PathVariable("id") int id, HttpSession session) {
         UserProfileDto user = authService.getCurrentUser(session);
         notificationService.markRead(id, user.userId());
         return Map.of("message", "Notification marked as read.");

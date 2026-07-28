@@ -60,7 +60,7 @@ public class ApplicationController {
 
     @PatchMapping("/{id}/status")
     public Map<String, String> updateStatus(
-            @PathVariable int id,
+            @PathVariable("id") int id,
             @Valid @RequestBody StatusUpdateRequest request,
             HttpSession session
     ) {
@@ -72,7 +72,7 @@ public class ApplicationController {
     @PostMapping("/{id}/contact")
     @ResponseStatus(HttpStatus.CREATED)
     public Map<String, String> contactCandidate(
-            @PathVariable int id,
+            @PathVariable("id") int id,
             @Valid @RequestBody ContactRequest request,
             HttpSession session
     ) {

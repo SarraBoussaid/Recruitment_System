@@ -48,7 +48,7 @@ public class MessageController {
 
     @GetMapping("/application/{applicationId}")
     public List<MessageDto> applicationThread(
-            @PathVariable int applicationId,
+            @PathVariable("applicationId") int applicationId,
             HttpSession session
     ) {
         UserProfileDto user = authService.getCurrentUser(session);
@@ -57,7 +57,7 @@ public class MessageController {
 
     @GetMapping("/conversation/{conversationId}")
     public List<MessageDto> conversationThread(
-            @PathVariable int conversationId,
+            @PathVariable("conversationId") int conversationId,
             HttpSession session
     ) {
         UserProfileDto user = authService.getCurrentUser(session);
@@ -67,7 +67,7 @@ public class MessageController {
     @PostMapping("/application/{applicationId}")
     @ResponseStatus(HttpStatus.CREATED)
     public Map<String, String> sendApplicationMessage(
-            @PathVariable int applicationId,
+            @PathVariable("applicationId") int applicationId,
             @Valid @RequestBody ContactRequest request,
             HttpSession session
     ) {
@@ -86,7 +86,7 @@ public class MessageController {
     @PostMapping("/conversation/{conversationId}")
     @ResponseStatus(HttpStatus.CREATED)
     public Map<String, String> sendConversationMessage(
-            @PathVariable int conversationId,
+            @PathVariable("conversationId") int conversationId,
             @Valid @RequestBody ContactRequest request,
             HttpSession session
     ) {
@@ -105,7 +105,7 @@ public class MessageController {
     @PostMapping("/candidate/{candidateId}")
     @ResponseStatus(HttpStatus.CREATED)
     public OutreachResponse contactCandidate(
-            @PathVariable int candidateId,
+            @PathVariable("candidateId") int candidateId,
             @Valid @RequestBody ContactRequest request,
             HttpSession session
     ) {

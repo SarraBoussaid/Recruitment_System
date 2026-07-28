@@ -53,7 +53,7 @@ public class DemoDataSeeder implements ApplicationRunner {
                 "Leading backend architectural design using Spring Boot 3, REST APIs, and microservices. Collaborating with cross-functional teams in Tunis.",
                 "Tunis", "full-time", "2,800 - 3,800 TND / mo");
 
-        int job2 = ensureJob(companyId, "DevOps & Infrastructure Specialist",
+        ensureJob(companyId, "DevOps & Infrastructure Specialist",
                 "Managing Kubernetes clusters, CI/CD pipelines, and automated cloud deployments.",
                 "Remote", "remote", "3,000 - 4,500 TND / mo");
 
